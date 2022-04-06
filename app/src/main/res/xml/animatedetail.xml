@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<MotionScene xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        app:constraintSetStart="@+id/start"
+        app:autoTransition="animateToEnd"
         app:constraintSetEnd="@+id/end"
-        app:duration="5000"
-        app:autoTransition="animateToEnd">
-    </Transition>
+        app:constraintSetStart="@+id/start"
+        app:duration="5000" />
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
@@ -17,11 +16,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/midMargin"
             android:layout_marginTop="@dimen/midMargin"
+            android:alpha="0.0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guide"
-            app:layout_constraintTop_toTopOf="parent"
-            android:alpha="0.0">
-        </Constraint>
+            app:layout_constraintTop_toTopOf="parent" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -31,10 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/midMargin"
             android:layout_marginTop="@dimen/midMargin"
+            android:alpha="1.0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guide"
-            app:layout_constraintTop_toTopOf="parent"
-            android:alpha="1.0">
-        </Constraint>
+            app:layout_constraintTop_toTopOf="parent" />
     </ConstraintSet>
 </MotionScene>

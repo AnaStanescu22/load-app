@@ -86,7 +86,6 @@ class MainActivity : AppCompatActivity() {
     private fun makeNotification(name: String, applicationContext: Context, status: String) {
         notificationId++
 
-        // Create an explicit intent for an Activity in your app
         val intent = Intent(this, DetailActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             putExtra("name", name)
@@ -107,7 +106,6 @@ class MainActivity : AppCompatActivity() {
                     .bigText(fileName)
             )
             .setPriority(NotificationCompat.PRIORITY_HIGH)
-            // Set the intent that will fire when the user taps the notification
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
             .addAction(
@@ -117,14 +115,11 @@ class MainActivity : AppCompatActivity() {
             )
 
         with(NotificationManagerCompat.from(this)) {
-            // notificationId is a unique int for each notification that you must define
             notify(notificationId, builder.build())
         }
     }
 
     private fun createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = CHANNEL_ID
             val descriptionText = getString(R.string.txt_channel_description)
@@ -132,7 +127,7 @@ class MainActivity : AppCompatActivity() {
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
             }
-            // Register the channel with the system
+
             val notificationManager: NotificationManager =
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)

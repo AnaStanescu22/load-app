@@ -71,10 +71,10 @@ class LoadingButton @JvmOverloads constructor(
     }
 
     init {
-        context.theme.obtainStyledAttributes( attrs, R.styleable.LoadingButton,0,0).apply {
-            try{
+        context.theme.obtainStyledAttributes(attrs, R.styleable.LoadingButton, 0, 0).apply {
+            try {
                 text = getString(R.styleable.LoadingButton_text).toString()
-                buttonBackgroundColor = ContextCompat.getColor(context,R.color.colorPrimary)
+                buttonBackgroundColor = ContextCompat.getColor(context, R.color.colorPrimary)
             } finally {
                 recycle()
             }
@@ -109,29 +109,47 @@ class LoadingButton @JvmOverloads constructor(
 
         canvas?.drawColor(buttonBackgroundColor)
         textPaint.getTextBounds(text, 0, text.length, textRect)
-        canvas?.drawRoundRect(0f, 0f, backgroundWidth, backgroundHeight, cornerRadius, cornerRadius, backgroundPaint)
+        canvas?.drawRoundRect(
+            0f,
+            0f,
+            backgroundWidth,
+            backgroundHeight,
+            cornerRadius,
+            cornerRadius,
+            backgroundPaint
+        )
 
         if (buttonState == ButtonState.Loading) {
             var progressVal = progress * measuredWidth.toFloat()
-            canvas?.drawRoundRect(0f, 0f, progressVal, backgroundHeight, cornerRadius, cornerRadius, inProgressBackgroundPaint)
+            canvas?.drawRoundRect(
+                0f,
+                0f,
+                progressVal,
+                backgroundHeight,
+                cornerRadius,
+                cornerRadius,
+                inProgressBackgroundPaint
+            )
 
             val arcDiameter = cornerRadius * 2
             val arcRectSize = measuredHeight.toFloat() - paddingBottom.toFloat() - arcDiameter
 
             progressVal = progress * 360f
-            canvas?.drawArc(paddingStart + arcDiameter,
+            canvas?.drawArc(
+                paddingStart + arcDiameter,
                 paddingTop.toFloat() + arcDiameter,
                 arcRectSize,
                 arcRectSize,
                 0f,
                 progressVal,
                 true,
-                inProgressArcPaint)
+                inProgressArcPaint
+            )
         }
         val centerX = measuredWidth.toFloat() / 2
         val centerY = measuredHeight.toFloat() / 2 - textRect.centerY()
 
-        canvas?.drawText(text,centerX, centerY, textPaint)
+        canvas?.drawText(text, centerX, centerY, textPaint)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

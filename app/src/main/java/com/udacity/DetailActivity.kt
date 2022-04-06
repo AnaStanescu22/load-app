@@ -21,7 +21,6 @@ class DetailActivity : AppCompatActivity() {
         download_status.text = status
 
         back_btn.setOnClickListener {
-            // Create an explicit intent for an Activity in your app
             val intent = Intent(this, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }

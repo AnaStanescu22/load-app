@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/animatedetail"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DetailActivity"
-    tools:showIn="@layout/activity_detail"
-    app:layoutDescription="@xml/animatedetail">
+    tools:showIn="@layout/activity_detail">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide"
@@ -16,18 +17,17 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
-
     <TextView
         android:id="@+id/file_name_txt"
+        style="@style/principal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/txt_file_name"
-        style="@style/principal"
-        android:textSize="16sp"
         android:layout_margin="@dimen/midMargin"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/txt_file_name"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/guide"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guide" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/file_name"
@@ -43,42 +43,42 @@
 
     <TextView
         android:id="@+id/status_txt"
+        style="@style/principal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/txt_status"
-        style="@style/principal"
-        android:textSize="16sp"
         android:layout_margin="@dimen/midMargin"
-        app:layout_constraintTop_toBottomOf="@id/file_name_txt"
+        android:text="@string/txt_status"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/guide"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guide" />
+        app:layout_constraintTop_toBottomOf="@id/file_name_txt" />
 
 
     <TextView
         android:id="@+id/download_status"
+        style="@style/description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/status"
-        style="@style/description"
-        android:textSize="16sp"
         android:layout_margin="@dimen/midMargin"
-        app:layout_constraintTop_toBottomOf="@id/file_name"
+        android:text="@string/status"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guide" />
+        app:layout_constraintStart_toEndOf="@id/guide"
+        app:layout_constraintTop_toBottomOf="@id/file_name" />
 
     <Button
         android:id="@+id/back_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_ok"
-        android:textColor="@color/white"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:backgroundTint="@color/colorAccent"
         android:layout_marginHorizontal="@dimen/midMargin"
         android:layout_marginBottom="@dimen/midMargin"
-        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/txt_ok"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
