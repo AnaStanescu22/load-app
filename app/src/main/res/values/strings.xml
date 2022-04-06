@@ -25,4 +25,12 @@
     <string name="txt_ok">OK</string>
     <string name="status">Success</string>
     <string name="name">Glide - Image Loading Library by BumpTech</string>
+
+    <string name="txt_select_a_file">Please select the file to download</string>
+    <string name="url_notification_channel_id" translatable="false">load_channel</string>
+    <string name="url_notification_channel_name" translatable="true">Load</string>
+
+    <string name="txt_notification_title">Download completed</string>
+    <string name="txt_channel_description">Notification channel for Load App</string>
+    <string name="txt_open_detail">Open Detail</string>
 </resources>
