@@ -19,4 +19,10 @@
     <string name="glide">Glide</string>
     <string name="retrofit">Retrofit</string>
     <string name="load_app">Load App</string>
+
+    <string name="txt_file_name">File Name: </string>
+    <string name="txt_status">"Status: "</string>
+    <string name="txt_ok">OK</string>
+    <string name="status">Success</string>
+    <string name="name">Glide - Image Loading Library by BumpTech</string>
 </resources>

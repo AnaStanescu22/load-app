@@ -8,4 +8,76 @@
     tools:context=".DetailActivity"
     tools:showIn="@layout/activity_detail">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+    <TextView
+        android:id="@+id/file_name_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_file_name"
+        style="@style/principal"
+        android:textSize="16sp"
+        android:layout_margin="@dimen/midMargin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guide" />
+
+    <TextView
+        android:id="@+id/file_name"
+        style="@style/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/midMargin"
+        android:text="@string/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guide"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="txtxtxtxtxtxt" />
+
+    <TextView
+        android:id="@+id/status_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_status"
+        style="@style/principal"
+        android:textSize="16sp"
+        android:layout_margin="@dimen/midMargin"
+        app:layout_constraintTop_toBottomOf="@id/file_name_txt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guide" />
+
+
+    <TextView
+        android:id="@+id/download_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/status"
+        style="@style/description"
+        android:textSize="16sp"
+        android:layout_margin="@dimen/midMargin"
+        app:layout_constraintTop_toBottomOf="@id/file_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guide" />
+
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_ok"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_marginHorizontal="@dimen/midMargin"
+        android:layout_marginBottom="@dimen/midMargin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
