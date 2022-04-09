@@ -3,24 +3,27 @@ package com.udacity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.content_detail.*
+import com.udacity.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
 
     private var name = ""
     private var status = ""
+    private lateinit var binding: ActivityDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_detail)
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         name = intent.getStringExtra("name").toString()
         status = intent.getStringExtra("status").toString()
-        file_name.text = name
-        download_status.text = status
+        binding.contentDetail.fileName.text = name
+        binding.contentDetail.downloadStatus.text = status
 
-        back_btn.setOnClickListener {
+        binding.contentDetail.backBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
@@ -28,6 +31,6 @@ class DetailActivity : AppCompatActivity() {
             finish()
         }
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
     }
 }

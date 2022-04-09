@@ -9,7 +9,6 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.content_main.view.*
 import kotlin.properties.Delegates
 
 class LoadingButton @JvmOverloads constructor(
@@ -46,7 +45,7 @@ class LoadingButton @JvmOverloads constructor(
                     duration = 3000
                     start()
                 }
-                custom_button.isEnabled = false
+                this.isEnabled = false
             }
 
             ButtonState.Completed -> {
@@ -61,7 +60,7 @@ class LoadingButton @JvmOverloads constructor(
                 valueAnimator.cancel()
 
                 progress = 0f
-                custom_button.isEnabled = true
+                this.isEnabled = true
             }
 
             ButtonState.Clicked -> {

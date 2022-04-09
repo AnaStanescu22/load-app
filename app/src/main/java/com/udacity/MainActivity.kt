@@ -22,14 +22,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
+import com.udacity.databinding.ActivityMainBinding
 import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
 
     private var downloadID: Long = 0
+
+    private lateinit var binding: ActivityMainBinding
 
     private lateinit var notificationManager: NotificationManager
     private lateinit var pendingIntent: PendingIntent
@@ -41,14 +42,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        setSupportActionBar(binding.toolbar)
 
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
 
         createNotificationChannel()
-        custom_button.setLoadingButtonState(ButtonState.Completed)
-        custom_button.setOnClickListener {
+        binding.contentMain.customButton.setLoadingButtonState(ButtonState.Completed)
+        binding.contentMain.customButton.setOnClickListener {
             download()
         }
     }
@@ -70,10 +75,10 @@ class MainActivity : AppCompatActivity() {
                             val status =
                                 cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))
                             if (status == DownloadManager.STATUS_SUCCESSFUL) {
-                                custom_button.setLoadingButtonState(ButtonState.Completed)
+                                binding.contentMain.customButton.setLoadingButtonState(ButtonState.Completed)
                                 makeNotification(fileName, applicationContext, SUCCESS)
                             } else {
-                                custom_button.setLoadingButtonState(ButtonState.Completed)
+                                binding.contentMain.customButton.setLoadingButtonState(ButtonState.Completed)
                                 makeNotification(fileName, applicationContext, FAILED)
                             }
                         }
@@ -136,7 +141,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun download() {
         if (url != null) {
-            custom_button.setLoadingButtonState(ButtonState.Loading)
+            binding.contentMain.customButton.setLoadingButtonState(ButtonState.Loading)
             notificationManager = ContextCompat.getSystemService(
                 applicationContext,
                 NotificationManager::class.java
@@ -167,7 +172,7 @@ class MainActivity : AppCompatActivity() {
             downloadID =
                 downloadManager.enqueue(request)// enqueue puts the download request in the queue.
         } else {
-            custom_button.setLoadingButtonState(ButtonState.Completed)
+            binding.contentMain.customButton.setLoadingButtonState(ButtonState.Completed)
             showToast(getString(R.string.txt_select_a_file))
         }
     }
